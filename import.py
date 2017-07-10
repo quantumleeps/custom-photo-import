@@ -56,6 +56,8 @@ jpg_glob_string = sd_card_loc + '/**/*.JPG'
 cr2_glob_string = sd_card_loc + '/**/*.CR2'
 rw2_glob_string = sd_card_loc + '/**/*.RW2'
 mp4_glob_string = sd_card_loc + '/**/*.MP4'
+# untested mov script
+# mov_glob_string = sd_card_loc + '/**/*.MOV'
 
 # The subprocess does a terminal command. The bytes format 
 # is then converted into a dictionary using an above function.
@@ -128,3 +130,20 @@ for mp4 in mp4s:
         os.makedirs(new_dir)
 # Need to add in .mov here. Need to add the appropriate initializing
 # lists, etc. above and glob search queries.
+
+# untested mov script
+# # movs = glob.glob(mov_glob_string, recursive=True)
+
+# for mov in movs:
+#     lines = subprocess.check_output(['exiftool', mov]).splitlines()
+#     exif_data = make_exif_dict(lines)
+#     photo_date = exif_data['Create Date']
+#     new_dir = scratch_loc + mov_dir_mod + '/' + photo_date[0:4]
+#     new_filename = new_dir + '/' + date_formatter(photo_date) +  '.MP4'
+#     if os.path.isdir(new_dir):
+#         if os.path.exists(new_filename):
+#             print('Filename exists; keeping original')
+#         else:
+#             copyfile(mov, new_filename)
+#     else:
+#         os.makedirs(new_dir)
